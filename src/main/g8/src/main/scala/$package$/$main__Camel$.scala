@@ -1,11 +1,9 @@
 package $package$
 
 import scala.scalajs.js
-import js.annotation._
-
 import io.scalajs.nodejs
 
-@JSExport @JSExportAll
+@JSExportTopLevel("$main;format="Camel"$")
 object $main;format="Camel"$ {
 
   // write awesome things!

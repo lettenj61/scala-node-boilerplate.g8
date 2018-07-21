@@ -1,13 +1,16 @@
 lazy val root = (project in file("."))
   .enablePlugins(ScalaJSPlugin)
   .settings(
-    organization  := "com.example",
-    scalaVersion  := "2.12.2",
+    organization  := "$organization$",
+    scalaVersion  := "$scalaVersion$",
     version       := "0.1.0-SNAPSHOT",
     name          := "$name$",
+    scalacOptions in Compile += "-P:scalajs:sjsDefinedByDefault",
     libraryDependencies ++= Seq(
-      "io.scalajs" %%% "nodejs" % "0.4.0",
-      "org.scalatest" %%% "scalatest" % "3.0.1" % Test
+      "io.scalajs" %%% "nodejs" % "0.4.2",
+      "com.lihaoyi" %%% "utest" % "0.6.3" % "test"
     ),
-    scalaJSModuleKind := ModuleKind.CommonJSModule
+    scalaJSLinkerConfig ~= {
+      _.withSourceMap(false).withModuleKind(ModuleKind.CommonJSModule)
+    }
   )
